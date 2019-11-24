@@ -1,3 +1,6 @@
+# MY PERSONAL CODE, JNGCODE
+# COPYRIGHT
+
 import numpy as np
 from joblib import dump, load
 from sklearn import datasets
