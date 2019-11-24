@@ -3,4 +3,4 @@ machine learning from scratch K-NN classifier
 
 KNN classifier fom scratch algorithm also containing KNN sklearn algorithm
 
-I used breast cancer dataset from UCI
+I used digits dataset and breast cancer dataset.
