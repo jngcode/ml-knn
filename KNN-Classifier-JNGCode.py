@@ -1,4 +1,5 @@
-# MY PERSONAL CODE, JNGCODE
+# MY PERSONAL CODE 
+# GITHUB: @JNGCODE
 # COPYRIGHT
 
 import numpy as np
@@ -49,20 +50,15 @@ def dataset_info(digits, x, y):
     print('------------------------------------------------------------------')
     return main()
 
-def skl_model(x_train, x_test, y_train, y_test):
-    knnCLF = KNeighborsClassifier(n_neighbors = 5).fit(x_train, y_train) #calling sklearn classifier to find neigbors
-    knnPredTest = knnCLF.predict(x_test) #using knn from sklearn to predict
-    knnPredTestAcc = accuracy_score(y_test, knnPredTest) # Accuracy of testing data sklmodel
-    knnPredTrain = knnCLF.predict(x_train)
-    knnPredTrainAcc = accuracy_score(y_train, knnPredTrain) #Accuracy of the training data sklmodel
-    print('------------------------------------------------------------------') 
-    print('[F2]: SKL Model Results: ') #printing sklearn all results
-    print('Error for SKLearn model of training set: {}'.format(1 - knnPredTrainAcc)) # [F4]Error of failure for training data.
-    print('Accuracy Score Training Set: ', accuracy_score(y_train, knnPredTrain)) #Accuracy of Training Data
-    print()
-    print('Error for SKLearn model of testing set: {}'.format(1 - knnPredTestAcc)) #[F4] Error statistic for Testing Set via SKLearn
-    print('Accuracy Score Testing Set: ', accuracy_score(y_test, knnPredTest)) #Accuracy statistic for Testing set Via SKLearn
-    print('------------------------------------------------------------------')  
+def skl_model(x_train, x_test, y_train, y_test, x, y):
+    #Use SKLearn libraries built in - for the SKLearn model. KNN.
+    knnCLF = KNeighborsClassifier(n_neighbors = 5).fit(x_train, y_train)
+    knn_pred = knnCLF.predict(x_test)
+    skl_knn_pred = knn_pred
+    skl_knn_accuracy = accuracy_score(y_test, knn_pred) #Accuracy of the training data sklmodel
+    dump(knnCLF, "skl_knn_model.joblib")
+    #Return results of KNN accuracy to print.
+    return skl_knn_accuracy
     
     dump(knnCLF, 'skl-model.joblib') #save the sklmodel to be called later.
     sklSaved = load('skl-model.joblib') #option to load sklmodel
